@@ -53,6 +53,7 @@ require_once("../templates/views_top.php"); ?>
   </div>
 
   <!-- Content Row -->
+
   <script>
     require([
       "esri/config",

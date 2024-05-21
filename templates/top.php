@@ -8,6 +8,11 @@
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" class="top">
+  <?php foreach ($messageTypes as $type) {
+    if (isset($_SESSION["project_pemetaan_toko_roti"]["message_$type"])) {
+      echo "<div class='message-$type' data-message-$type='{$_SESSION["project_pemetaan_toko_roti"]["message_$type"]}'></div>";
+    }
+  } ?>
   <!-- Preloader-->
   <div id="preloader">
     <div id="status"></div>

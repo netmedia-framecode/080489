@@ -11,7 +11,9 @@
 <!-- Custom CSS-->
 <link href="<?= $baseURL ?>assets/css/universal.css" rel="stylesheet">
 
-<link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css">
-<script src="https://js.arcgis.com/4.29/"></script>
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<!-- Custom styles for plugin -->
+<script src="<?= $baseURL ?>assets/sweetalert/dist/sweetalert2.all.min.js"></script>
+
+<link href="<?= $baseURL ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

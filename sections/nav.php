@@ -1,5 +1,7 @@
 <!-- Navigation-->
-<nav class="navbar navbar-universal navbar-custom navbar-fixed-top">
+<nav class="navbar navbar-universal navbar-custom navbar-fixed-top <?php if ($_SESSION["project_pemetaan_toko_roti"]["name_page"] == "Maps") {
+                                                                      echo "bg-dark";
+                                                                    } ?>">
   <div class="container">
     <div class="navbar-header">
       <button type="button" data-toggle="collapse" data-target=".navbar-main-collapse" class="navbar-toggle">
@@ -9,7 +11,8 @@
         <span class="icon-bar"></span>
       </button>
       <a href="./" class="navbar-brand page-scroll">
-        <img src="img/logo.png" alt="Logo" class="logo">
+        <!-- <img src="<?= $baseURL ?>assets/img/logo.png" alt="Logo" class="logo"> -->
+        Pemetaan Toko Roti
       </a>
     </div>
     <div class="collapse navbar-collapse navbar-main-collapse">

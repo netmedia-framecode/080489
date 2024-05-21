@@ -1,8 +1,0 @@
-[2024-05-11 09:19:37] Error [8]: Undefined variable: view_toko in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\pemetaan-toko.php on line 35
-[2024-05-11 09:19:37] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\pemetaan-toko.php on line 35
-[2024-05-12 07:48:22] Error [8]: Undefined variable: data in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\maps.php on line 44
-[2024-05-12 07:48:22] Error [8]: Trying to access array offset on value of type null in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\maps.php on line 44
-[2024-05-12 07:48:22] Error [8]: Undefined variable: data in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\maps.php on line 44
-[2024-05-12 07:48:22] Error [8]: Trying to access array offset on value of type null in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\maps.php on line 44
-[2024-05-12 07:53:23] Error [8]: Undefined variable: views_tentang in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\tentang.php on line 17
-[2024-05-12 07:53:23] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\tentang.php on line 17

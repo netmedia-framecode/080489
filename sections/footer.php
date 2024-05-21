@@ -24,22 +24,27 @@
 
 <!-- jQuery-->
 <script src="<?= $baseURL ?>assets/js/jquery-1.12.4.min.js"></script>
-<!-- Bootstrap Core JavaScript-->
-<script src="<?= $baseURL ?>assets/js/bootstrap.min.js"></script>
-<!-- Plugin JavaScript-->
-<script src="<?= $baseURL ?>assets/js/jquery.easing.min.js"></script>
-<script src="<?= $baseURL ?>assets/js/jquery.countdown.min.js"></script>
-<script src="<?= $baseURL ?>assets/js/device.min.js"></script>
-<script src="<?= $baseURL ?>assets/js/form.min.js"></script>
-<script src="<?= $baseURL ?>assets/js/jquery.placeholder.min.js"></script>
-<script src="<?= $baseURL ?>assets/js/jquery.shuffle.min.js"></script>
-<script src="<?= $baseURL ?>assets/js/jquery.parallax.min.js"></script>
-<script src="<?= $baseURL ?>assets/js/jquery.circle-progress.min.js"></script>
-<script src="<?= $baseURL ?>assets/js/jquery.swipebox.min.js"></script>
-<script src="<?= $baseURL ?>assets/js/smoothscroll.min.js"></script>
-<script src="<?= $baseURL ?>assets/js/wow.min.js"></script>
-<script src="<?= $baseURL ?>assets/js/jquery.smartmenus.js"></script>
-<script src="<?= $baseURL ?>assets/js/map.js"></script>
+
+<?php if ($_SESSION["project_pemetaan_toko_roti"]["name_page"] != "Maps") { ?>
+  <!-- Bootstrap Core JavaScript-->
+  <script src="<?= $baseURL ?>assets/js/bootstrap.min.js"></script>
+
+  <!-- Plugin JavaScript-->
+  <script src="<?= $baseURL ?>assets/js/jquery.easing.min.js"></script>
+  <script src="<?= $baseURL ?>assets/js/jquery.countdown.min.js"></script>
+  <script src="<?= $baseURL ?>assets/js/jquery.circle-progress.min.js"></script>
+  <script src="<?= $baseURL ?>assets/js/jquery.swipebox.min.js"></script>
+  <script src="<?= $baseURL ?>assets/js/device.min.js"></script>
+  <script src="<?= $baseURL ?>assets/js/form.min.js"></script>
+  <script src="<?= $baseURL ?>assets/js/jquery.placeholder.min.js"></script>
+  <script src="<?= $baseURL ?>assets/js/jquery.shuffle.min.js"></script>
+  <script src="<?= $baseURL ?>assets/js/jquery.parallax.min.js"></script>
+  <script src="<?= $baseURL ?>assets/js/wow.min.js"></script>
+  <script src="<?= $baseURL ?>assets/js/jquery.smartmenus.js"></script>
+  <script src="<?= $baseURL ?>assets/js/map.js"></script>
+  <script src="<?= $baseURL ?>assets/js/smoothscroll.min.js"></script>
+<?php } ?>
+
 <!-- Custom Theme JavaScript-->
 <script src="<?= $baseURL ?>assets/js/universal.js"></script>
 
@@ -52,3 +57,20 @@
   }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+  const showMessage = (type, title, message) => {
+    if (message) {
+      Swal.fire({
+        icon: type,
+        title: title,
+        text: message,
+      });
+    }
+  };
+
+  showMessage("success", "Berhasil Terkirim", $(".message-success").data("message-success"));
+  showMessage("info", "For your information", $(".message-info").data("message-info"));
+  showMessage("warning", "Peringatan!!", $(".message-warning").data("message-warning"));
+  showMessage("error", "Kesalahan", $(".message-danger").data("message-danger"));
+</script>
