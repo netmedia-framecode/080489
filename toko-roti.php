@@ -15,15 +15,15 @@ require_once("templates/top.php");
 </header>
 <!-- Why Section-->
 <section>
-  <div class="container text-center">
+  <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-lg-8 col-lg-offset-2 text-center">
         <h3>Toko Roti</h3>
       </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-start">
       <?php foreach ($view_toko_detail as $data_toko) { ?>
-        <div data-wow-delay=".2s" class="col-lg-3 col-sm-6 wow fadeIn">
+        <div data-wow-delay=".2s" class="col-lg-3 wow fadeIn" style="margin-bottom: 50px;">
           <h4><img src="<?= $baseURL ?>assets/img/toko/<?= $data_toko['image_toko'] ?>" style="width: 250px; height: 250px;" alt=""><br> <?= $data_toko['nama_toko'] ?></h4>
           <p><?= $data_toko['alamat'] ?></p>
         </div>
