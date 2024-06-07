@@ -1,0 +1,33 @@
+[2024-06-06 23:21:33] Error [8]: Undefined index: jumlah_roti in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 176
+[2024-06-06 23:22:01] Error [8]: Undefined index: jumlah_roti in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 176
+[2024-06-06 23:48:11] Error [8]: Undefined index: image_toko in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 121
+[2024-06-06 23:48:11] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 133
+[2024-06-06 23:48:11] Error [8]: Undefined index: deskripsi in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 137
+[2024-06-06 23:48:11] Error [8]: Undefined index: jam_kerja_buka in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 143
+[2024-06-06 23:48:11] Error [8]: Undefined index: jam_kerja_tutup in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 149
+[2024-06-06 23:48:11] Error [8]: Undefined index: image_toko in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 177
+[2024-06-06 23:48:11] Error [8]: Undefined index: image_toko in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 121
+[2024-06-06 23:48:11] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 133
+[2024-06-06 23:48:11] Error [8]: Undefined index: deskripsi in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 137
+[2024-06-06 23:48:11] Error [8]: Undefined index: jam_kerja_buka in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 143
+[2024-06-06 23:48:11] Error [8]: Undefined index: jam_kerja_tutup in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 149
+[2024-06-06 23:48:11] Error [8]: Undefined index: image_toko in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 177
+[2024-06-06 23:48:29] Error [8]: Undefined index: image_toko in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 122
+[2024-06-06 23:48:29] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 134
+[2024-06-06 23:48:29] Error [8]: Undefined index: deskripsi in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 138
+[2024-06-06 23:48:29] Error [8]: Undefined index: jam_kerja_buka in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 144
+[2024-06-06 23:48:29] Error [8]: Undefined index: jam_kerja_tutup in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 150
+[2024-06-06 23:48:29] Error [8]: Undefined index: image_toko in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 178
+[2024-06-06 23:48:29] Error [8]: Undefined index: image_toko in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 122
+[2024-06-06 23:48:29] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 134
+[2024-06-06 23:48:29] Error [8]: Undefined index: deskripsi in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 138
+[2024-06-06 23:48:29] Error [8]: Undefined index: jam_kerja_buka in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 144
+[2024-06-06 23:48:29] Error [8]: Undefined index: jam_kerja_tutup in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 150
+[2024-06-06 23:48:29] Error [8]: Undefined index: image_toko in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 178
+[2024-06-06 23:51:42] Error [2]: number_format() expects parameter 1 to be float, string given in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 105
+[2024-06-06 23:51:42] Error [2]: number_format() expects parameter 1 to be float, string given in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 105
+[2024-06-06 23:52:30] Error [2]: number_format() expects parameter 1 to be float, string given in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 105
+[2024-06-06 23:52:30] Error [2]: number_format() expects parameter 1 to be float, string given in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 105
+[2024-06-06 23:52:32] Error [2]: number_format() expects parameter 1 to be float, string given in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 105
+[2024-06-06 23:52:32] Error [2]: number_format() expects parameter 1 to be float, string given in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 105
+[2024-06-06 23:52:49] Error [2]: number_format() expects parameter 1 to be float, string given in E:\laragon\www\apps\tugas\pemetaan_toko_roti\views\roti.php on line 105

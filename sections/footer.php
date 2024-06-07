@@ -25,7 +25,7 @@
 <!-- jQuery-->
 <script src="<?= $baseURL ?>assets/js/jquery-1.12.4.min.js"></script>
 
-<?php if ($_SESSION["project_pemetaan_toko_roti"]["name_page"] != "Maps") { ?>
+<?php if ($_SESSION["project_pemetaan_toko_roti"]["name_page"] != "Maps" && $_SESSION["project_pemetaan_toko_roti"]["name_page"] != "Toko Roti Detail") { ?>
   <!-- Bootstrap Core JavaScript-->
   <script src="<?= $baseURL ?>assets/js/bootstrap.min.js"></script>
 

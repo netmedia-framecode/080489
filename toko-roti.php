@@ -24,7 +24,7 @@ require_once("templates/top.php");
     <div class="row justify-content-start">
       <?php foreach ($view_toko_detail as $data_toko) { ?>
         <div data-wow-delay=".2s" class="col-lg-3 wow fadeIn" style="margin-bottom: 50px;">
-          <h4><img src="<?= $baseURL ?>assets/img/toko/<?= $data_toko['image_toko'] ?>" style="width: 250px; height: 250px;" alt=""><br> <?= $data_toko['nama_toko'] ?></h4>
+          <h4 style="cursor: pointer;" onclick="window.location.href='toko-roti-detail?post_id=<?= $data_toko['id_toko'] ?>'"><img src="<?= $baseURL ?>assets/img/toko/<?= $data_toko['image_toko'] ?>" style="width: 250px; height: 250px;" alt=""><br> <?= $data_toko['nama_toko'] ?></h4>
           <p><?= $data_toko['alamat'] ?></p>
         </div>
       <?php } ?>

@@ -26,6 +26,7 @@ require_once("../templates/views_top.php"); ?>
               <th class="text-center">Nama Toko</th>
               <th class="text-center">Alamat</th>
               <th class="text-center">Deskripsi</th>
+              <th class="text-center">Jam Kerja</th>
               <th class="text-center">Created at</th>
               <th class="text-center">Updated at</th>
               <th class="text-center" style="width: 200px;">Aksi</th>
@@ -38,6 +39,7 @@ require_once("../templates/views_top.php"); ?>
               <th class="text-center">Nama Toko</th>
               <th class="text-center">Alamat</th>
               <th class="text-center">Deskripsi</th>
+              <th class="text-center">Jam Kerja</th>
               <th class="text-center">Created at</th>
               <th class="text-center">Updated at</th>
               <th class="text-center">Aksi</th>
@@ -69,6 +71,13 @@ require_once("../templates/views_top.php"); ?>
                 <td><?= $data['nama_toko'] ?></td>
                 <td><?= $data['alamat'] ?></td>
                 <td><?= $data['deskripsi'] ?></td>
+                <td>
+                  <?php $jam_kerja_buka = date_create($data["jam_kerja_buka"]);
+                  $jam_kerja_buka = date_format($jam_kerja_buka, "h:i a");
+                  $jam_kerja_tutup = date_create($data["jam_kerja_tutup"]);
+                  $jam_kerja_tutup = date_format($jam_kerja_tutup, "h:i a");
+                  echo $jam_kerja_buka . ' - ' . $jam_kerja_tutup; ?>
+                </td>
                 <td><span class="badge bg-success text-white"><?php $created_at = date_create($data["created_at"]);
                                                               echo date_format($created_at, "l, d M Y"); ?></span></td>
                 <td><span class="badge bg-warning"><?php $updated_at = date_create($data["updated_at"]);
@@ -106,6 +115,20 @@ require_once("../templates/views_top.php"); ?>
                             <div class="form-group">
                               <label for="deskripsi">Deskripsi</label>
                               <textarea name="deskripsi" class="form-control" id="deskripsi" rows="3"><?= $data['deskripsi'] ?></textarea>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label for="jam_kerja_buka">Jam Buka</label>
+                                  <input type="time" name="jam_kerja_buka" value="<?= $data['jam_kerja_buka'] ?>" class="form-control" id="jam_kerja_buka" required>
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label for="jam_kerja_tutup">Jam Tutup</label>
+                                  <input type="time" name="jam_kerja_tutup" value="<?= $data['jam_kerja_tutup'] ?>" class="form-control" id="jam_kerja_tutup" required>
+                                </div>
+                              </div>
                             </div>
                           </div>
                           <div class="modal-footer justify-content-center border-top-0">
@@ -178,6 +201,20 @@ require_once("../templates/views_top.php"); ?>
             <div class="form-group">
               <label for="deskripsi">Deskripsi</label>
               <textarea name="deskripsi" class="form-control" id="deskripsi" rows="3"></textarea>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="jam_kerja_buka">Jam Buka</label>
+                  <input type="time" name="jam_kerja_buka" class="form-control" id="jam_kerja_buka" required>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="jam_kerja_tutup">Jam Tutup</label>
+                  <input type="time" name="jam_kerja_tutup" class="form-control" id="jam_kerja_tutup" required>
+                </div>
+              </div>
             </div>
           </div>
           <div class="modal-footer justify-content-center border-top-0">

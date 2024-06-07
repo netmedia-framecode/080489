@@ -982,6 +982,7 @@ if (isset($_SESSION["project_pemetaan_toko_roti"]["users"])) {
                   <th>Nama Toko</th>
                   <th>Alamat</th>
                   <th>Deskripsi</th>
+                  <th>Jam Kerja</th>
                 </tr>';
     $no = 1;
     while ($row = mysqli_fetch_assoc($result)) {
@@ -990,6 +991,7 @@ if (isset($_SESSION["project_pemetaan_toko_roti"]["users"])) {
                     <td>' . $row['nama_toko'] . '</td>
                     <td>' . $row['alamat'] . '</td>
                     <td>' . $row['deskripsi'] . '</td>
+                    <td>' . $row['jam_kerja_buka'] . ' - ' . $row['jam_kerja_tutup'] . '</td>
                  </tr>';
     }
     $html .= '</table>';
@@ -1014,6 +1016,7 @@ if (isset($_SESSION["project_pemetaan_toko_roti"]["users"])) {
     $sheet->setCellValue('B1', 'Nama Toko');
     $sheet->setCellValue('C1', 'Alamat');
     $sheet->setCellValue('D1', 'Deskripsi');
+    $sheet->setCellValue('E1', 'Jam Kerja');
     $row = 2;
     $no = 1;
     while ($row_data = mysqli_fetch_assoc($result)) {
@@ -1021,10 +1024,11 @@ if (isset($_SESSION["project_pemetaan_toko_roti"]["users"])) {
       $sheet->setCellValue('B' . $row, $row_data['nama_toko']);
       $sheet->setCellValue('C' . $row, $row_data['alamat']);
       $sheet->setCellValue('D' . $row, $row_data['deskripsi']);
+      $sheet->setCellValue('E' . $row, $row_data['jam_kerja_buka'] . ' - ' . $row_data['jam_kerja_tutup']);
       $row++;
       $no++;
     }
-    foreach (range('A', 'D') as $column) {
+    foreach (range('A', 'E') as $column) {
       $sheet->getColumnDimension($column)->setAutoSize(true);
     }
     $writer = new PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
@@ -1067,7 +1071,7 @@ if (isset($_SESSION["project_pemetaan_toko_roti"]["users"])) {
           alert($message, $message_type);
           return false;
         }
-        $sql = "INSERT INTO toko(nama_toko,image_toko,alamat,deskripsi) VALUES('$data[nama_toko]','$image_toko','$data[alamat]','$data[deskripsi]')";
+        $sql = "INSERT INTO toko(nama_toko,image_toko,alamat,deskripsi,jam_kerja_buka,jam_kerja_tutup) VALUES('$data[nama_toko]','$image_toko','$data[alamat]','$data[deskripsi]','$data[jam_kerja_buka]','$data[jam_kerja_tutup]')";
         mysqli_query($conn, $sql);
       }
     }
@@ -1103,7 +1107,7 @@ if (isset($_SESSION["project_pemetaan_toko_roti"]["users"])) {
         $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
 
         // Simpan data ke database
-        $sql = "INSERT INTO toko (nama_toko,alamat) VALUES ('" . $rowData[0][0] . "', '" . $rowData[0][1] . "')";
+        $sql = "INSERT INTO toko (nama_toko,alamat,deskripsi,jam_kerja_buka,jam_kerja_tutup) VALUES ('" . $rowData[0][0] . "', '" . $rowData[0][1] . "', '" . $rowData[0][2] . "', '" . $rowData[0][3] . "', '" . $rowData[0][4] . "')";
         mysqli_query($conn, $sql);
       }
     }
@@ -1150,7 +1154,7 @@ if (isset($_SESSION["project_pemetaan_toko_roti"]["users"])) {
       } else if (empty($_FILE['image_toko']["name"])) {
         $image_toko = $data['image_tokoOld'];
       }
-      $sql = "UPDATE toko SET nama_toko='$data[nama_toko]', image_toko='$image_toko', alamat='$data[alamat]', deskripsi='$data[deskripsi]' WHERE id_toko='$data[id_toko]'";
+      $sql = "UPDATE toko SET nama_toko='$data[nama_toko]', image_toko='$image_toko', alamat='$data[alamat]', deskripsi='$data[deskripsi]', jam_kerja_buka='$data[jam_kerja_buka]', jam_kerja_tutup='$data[jam_kerja_tutup]' WHERE id_toko='$data[id_toko]'";
       mysqli_query($conn, $sql);
     }
 
@@ -1234,6 +1238,29 @@ if (isset($_SESSION["project_pemetaan_toko_roti"]["users"])) {
     }
 
     mysqli_query($conn, $sql);
+    return mysqli_affected_rows($conn);
+  }
+
+  function roti($conn, $data, $action)
+  {
+    if ($action == "insert") {
+      foreach ($data['roti'] as $index => $nama) {
+        $harga = $data['harga'][$index];
+        $sql = "INSERT INTO roti (id_toko, jenis_roti, harga) VALUES ('$data[id_toko]', '$nama', '$harga')";
+        mysqli_query($conn, $sql);
+      }
+    }
+
+    if ($action == "update") {
+      $sql = "UPDATE roti SET jenis_roti='$data[roti]', harga='$data[harga]' WHERE id_roti='$data[id_roti]'";
+      mysqli_query($conn, $sql);
+    }
+
+    if ($action == "delete") {
+      $sql = "DELETE FROM roti WHERE id_roti='$data[id_roti]'";
+      mysqli_query($conn, $sql);
+    }
+
     return mysqli_affected_rows($conn);
   }
 

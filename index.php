@@ -9,7 +9,7 @@ require_once("templates/top.php");
 <header data-background="<?= $baseURL ?>assets/img/header.jpg" class="intro">
   <!-- Intro Header-->
   <div class="intro-body">
-    <h4>Pemetaan Toko Roti</h4>
+    <h1>Pemetaan Toko Roti</h1>
     <h1>Sistem Informasi Geografis</h1>
     <div data-wow-delay="1s" class="scroll-btn wow fadeInDown">
       <a href="#about" class="page-scroll"><span class="mouse"><span class="weel"><span></span></span></span></a>

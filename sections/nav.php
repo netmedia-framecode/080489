@@ -1,5 +1,5 @@
 <!-- Navigation-->
-<nav class="navbar navbar-universal navbar-custom navbar-fixed-top <?php if ($_SESSION["project_pemetaan_toko_roti"]["name_page"] == "Maps") {
+<nav class="navbar navbar-universal navbar-custom navbar-fixed-top <?php if ($_SESSION["project_pemetaan_toko_roti"]["name_page"] == "Maps" || $_SESSION["project_pemetaan_toko_roti"]["name_page"] == "Toko Roti Detail") {
                                                                       echo "bg-dark";
                                                                     } ?>">
   <div class="container">
@@ -11,8 +11,8 @@
         <span class="icon-bar"></span>
       </button>
       <a href="./" class="navbar-brand page-scroll">
-        <!-- <img src="<?= $baseURL ?>assets/img/logo.png" alt="Logo" class="logo"> -->
-        Pemetaan Toko Roti
+        <img src="<?= $baseURL ?>assets/img/logo.png" style="width: 50px;height: 50px;margin-top: -15px;" alt="Logo">
+        <!-- Pemetaan Toko Roti -->
       </a>
     </div>
     <div class="collapse navbar-collapse navbar-main-collapse">

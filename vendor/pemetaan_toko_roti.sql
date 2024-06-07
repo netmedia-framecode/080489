@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 23 Bulan Mei 2024 pada 23.07
--- Versi server: 8.3.0
--- Versi PHP: 8.1.10
+-- Waktu pembuatan: 07 Jun 2024 pada 07.05
+-- Versi server: 10.3.39-MariaDB-cll-lve
+-- Versi PHP: 8.1.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pemetaan_toko_roti`
+-- Database: `zjxtorpv_080489`
 --
 
 -- --------------------------------------------------------
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `auth` (
-  `id` int NOT NULL,
-  `image` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `bg` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `image` varchar(50) DEFAULT NULL,
+  `bg` varchar(35) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -47,11 +47,11 @@ INSERT INTO `auth` (`id`, `image`, `bg`) VALUES
 --
 
 CREATE TABLE `galeri` (
-  `id_galeri` int NOT NULL,
-  `id_toko` int DEFAULT NULL,
-  `image_galeri` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id_galeri` int(11) NOT NULL,
+  `id_toko` int(11) DEFAULT NULL,
+  `image_galeri` varchar(100) DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -86,14 +86,21 @@ INSERT INTO `galeri` (`id_galeri`, `id_toko`, `image_galeri`, `created_at`, `upd
 --
 
 CREATE TABLE `kontak` (
-  `id_kontak` int NOT NULL,
-  `username` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone` char(12) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `pesan` text COLLATE utf8mb4_general_ci,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id_kontak` int(11) NOT NULL,
+  `username` varchar(75) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `phone` char(12) DEFAULT NULL,
+  `pesan` text DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `kontak`
+--
+
+INSERT INTO `kontak` (`id_kontak`, `username`, `email`, `phone`, `pesan`, `created_at`, `updated_at`) VALUES
+(4, 'Isna kolo', 'isnakolo@gmail.com', '+62 877-7734', '', '2024-05-28 04:42:30', '2024-05-28 04:42:30');
 
 -- --------------------------------------------------------
 
@@ -102,12 +109,12 @@ CREATE TABLE `kontak` (
 --
 
 CREATE TABLE `maps` (
-  `id_map` int NOT NULL,
-  `id_toko` int DEFAULT NULL,
-  `longitude` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `latitude` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id_map` int(11) NOT NULL,
+  `id_toko` int(11) DEFAULT NULL,
+  `longitude` varchar(35) DEFAULT NULL,
+  `latitude` varchar(35) DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -134,14 +141,39 @@ INSERT INTO `maps` (`id_map`, `id_toko`, `longitude`, `latitude`, `created_at`, 
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `roti`
+--
+
+CREATE TABLE `roti` (
+  `id_roti` int(11) NOT NULL,
+  `id_toko` int(11) DEFAULT NULL,
+  `jenis_roti` text DEFAULT NULL,
+  `harga` char(20) DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `roti`
+--
+
+INSERT INTO `roti` (`id_roti`, `id_toko`, `jenis_roti`, `harga`, `created_at`, `updated_at`) VALUES
+(3, 15, 'Roti sisir keju', '5000', '2024-06-07 08:00:21', '2024-06-07 08:00:21'),
+(4, 15, 'roti coklat kacang', '6000', '2024-06-07 08:00:21', '2024-06-07 08:00:21'),
+(5, 15, 'roti burder', '11000', '2024-06-07 08:00:21', '2024-06-07 08:00:21'),
+(6, 15, 'roti mikx mantega', '7000', '2024-06-07 08:00:21', '2024-06-07 08:00:21');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tentang`
 --
 
 CREATE TABLE `tentang` (
-  `id_tentang` int NOT NULL,
-  `deskripsi` text COLLATE utf8mb4_general_ci,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id_tentang` int(11) NOT NULL,
+  `deskripsi` text DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -149,7 +181,7 @@ CREATE TABLE `tentang` (
 --
 
 INSERT INTO `tentang` (`id_tentang`, `deskripsi`, `created_at`, `updated_at`) VALUES
-(1, '<p><strong>Lorem ipsum</strong> dolor sit amet consectetur adipisicing elit. Quidem fugit quibusdam ipsum recusandae a eveniet quas optio non, earum modi rerum excepturi sequi alias voluptatem facilis voluptates commodi repudiandae debitis eius expedita assumenda cum amet mollitia laborum. Sint natus consectetur veniam labore doloribus cupiditate ea exercitationem. Laboriosam tenetur exercitationem cum ducimus quae nobis inventore, non amet, unde ea maxime tempore officiis alias debitis nesciunt impedit accusamus consectetur! Quis assumenda sit, rem dolorum nihil autem dignissimos quasi quaerat aliquid nam repellendus recusandae eius aspernatur, pariatur corrupti adipisci iure. Inventore atque in culpa beatae. Placeat dicta iure ab provident, <strong>enim eos cupiditate.</strong></p>\r\n', '2024-05-12 15:55:15', '2024-05-12 16:00:43');
+(1, '<p>Umkm seringkali memiliki tantangan dalam memperluas jangkauan pasar.calon pembeli ataupun pelanggan mengalami kesulitan dalam mencari informasi tentang Umkm,terutama Umkm Toko Roti yang belum melakukan pemetaan secara sistem informasi geografis.Hal ini menghambat potensi pertumbuhan dan keberlanjutan Umkm Toko Roti di Kota Kupang,serta mempersulit interaksi antara Umkm Toko Roti dengan pelanggan.Dalam beberapa kasus,pemetaan Umkm Toko Roti masi dilakukan secara menual atau menggunakan metode yang tidak efesien.Misalnya,Dinas Koperasi masi menggunakan sistem yang menual sehinggah seringkali tidak dapat memberikan informasi yang akurat dan terkini tentang lokasi,dan detail informasi tentang Umkm Toko Roti.</p>\r\n\r\n<p>Dalam era digital ini,pemetaan Umkm disuatu wilayah dapat dilakukan secara <em>online </em>atau melalui sistem informasi geografis.Pemetaan Umkm Toko Roti ini memungkinkan pengguna untuk mengakses informasi dan lokasi Umkm Toko Roti dimana saja dan kapan saja. Selain itu, pemetaan Umkm Toko Roti juga memudahkan perancangan dan pengambilan keputusan untuk memungkinkan akses yang lebih muda dan luas, terdapat data dan pemetaan Umkm Toko Roti.</p>\r\n', '2024-05-12 15:55:15', '2024-05-29 13:41:29');
 
 -- --------------------------------------------------------
 
@@ -158,35 +190,37 @@ INSERT INTO `tentang` (`id_tentang`, `deskripsi`, `created_at`, `updated_at`) VA
 --
 
 CREATE TABLE `toko` (
-  `id_toko` int NOT NULL,
-  `nama_toko` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `image_toko` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `alamat` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `deskripsi` text COLLATE utf8mb4_general_ci,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id_toko` int(11) NOT NULL,
+  `nama_toko` varchar(50) DEFAULT NULL,
+  `image_toko` varchar(75) DEFAULT NULL,
+  `alamat` varchar(100) DEFAULT NULL,
+  `deskripsi` text DEFAULT NULL,
+  `jam_kerja_buka` time NOT NULL,
+  `jam_kerja_tutup` time NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `toko`
 --
 
-INSERT INTO `toko` (`id_toko`, `nama_toko`, `image_toko`, `alamat`, `deskripsi`, `created_at`, `updated_at`) VALUES
-(1, 'TOKO ROTI BORNEO', '772533361.jpg', 'JL.JENDRAL SUDIRMAN NO.129, KUANINO, KEC.KOTA RAJA, KOTA KUPANG, NUSA TENGGARA TIMUR', '-', '2024-05-11 14:07:25', '2024-05-24 06:59:37'),
-(2, 'SUKA ROTI', '3602220060.jpg', 'JL.PERINTIS KEMERDEKAAN 1 NO.1 KAYU PUTI, KEC.OEBOBO KOTA KUPANG, NUSA TENGGARA TIMUR', 'tes', '2024-05-11 14:10:35', '2024-05-24 06:59:23'),
-(3, 'ANGELLO BAKERY', '4223311878.jpg', 'JL.JENDRAL SUDIRMAN NO.117A, KUANINO, KEC KOTA RAJA, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '2024-05-11 14:54:09', '2024-05-24 06:58:57'),
-(4, 'ROYAL BAKERY', '276103660.jpg', 'JL.BUND.PU KELURAHAN NO.10,TUAK DAUN MERAH,KEC.OEBOBO,KOTA KUPANG,NUSATENGGARA TIM.', '', '2024-05-11 14:54:09', '2024-05-24 06:14:05'),
-(5, 'QUEEN ROTI LILIBA', '482227265.jpg', 'JL.PIET A.TALLO, LILIBA, KEC.OEBOBO, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '2024-05-11 14:54:09', '2024-05-24 06:58:43'),
-(6, 'SUKA ROTI BAKERY', '2231924521.jpg', 'JL.TIMOR RAYA NO.KM.10 N0.44, LASIANA, KEC.KLP.LIMA KOTA KUPANG, NUSA TENGGARA TIMUR.', '', '2024-05-11 14:54:09', '2024-05-24 06:58:22'),
-(7, 'JOY BAKERY', '2289166706.jpg', 'RJ73+XPX, NAIKOLAN, KEC.MAULAFA, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '2024-05-11 14:54:09', '2024-05-24 06:57:59'),
-(8, 'ANGELYN BAKERY', '3375888800.jpg', 'JL.TOMPELLO NO.23 B, OETETE, KEC.OEBOBO, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '2024-05-11 14:54:09', '2024-05-24 06:57:29'),
-(9, 'ALETHA BAKERY', '611354224.jpg', 'JL.THOM TOUSELAK, OEBUFU, KEC.OEBOBO, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '2024-05-11 14:54:09', '2024-05-24 06:57:11'),
-(10, 'J.CO DONUTS DAN BERTALK KUPANG', '885557812.jpg', 'JL.W.J.LALAMENTIK, OEBUFU, OEBOBO, KUPANG CITY, EAST NUSA TENGGARA TIMUR', '', '2024-05-11 14:54:09', '2024-05-24 06:56:56'),
-(11, 'SUKA ROTI-ANEKA ROTI SEHAT', '2866511154.jpg', 'JL.MOCH HATTA, OETETE, KEC.OEBOBO, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '2024-05-11 14:54:09', '2024-05-24 06:56:39'),
-(12, 'ROTI KAHANG JAYA', '1104221670.jpg', 'JL.PIET A.TALLO, LILIBA, KEC.OEBOBO, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '2024-05-11 14:54:09', '2024-05-24 06:56:25'),
-(13, 'SUKA ROTI BAKERY OESAPA', '912053900.jpg', 'VM22+8J5, OESAPA, KEC KLP.LIMA, KOTA KUPANG, NUSA TENGGARA TIMUR.', '', '2024-05-11 14:54:09', '2024-05-24 06:55:59'),
-(14, 'PARIS BAKERY', '286369527.jpg', 'JL.TIMUR RAYA NO.KM.9, OESAPA, KEC.KLP.LIMA, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '2024-05-11 14:54:10', '2024-05-24 06:55:35'),
-(15, 'ROTI AWET MUDA', '2801990627.jpg', 'JL.HEREWILA NO.3, NAIKOTEN II, KEC.KOTA RAJA, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '2024-05-11 14:54:10', '2024-05-24 06:55:20');
+INSERT INTO `toko` (`id_toko`, `nama_toko`, `image_toko`, `alamat`, `deskripsi`, `jam_kerja_buka`, `jam_kerja_tutup`, `created_at`, `updated_at`) VALUES
+(1, 'TOKO ROTI BORNEO', '772533361.jpg', 'JL.JENDRAL SUDIRMAN NO.129, KUANINO, KEC.KOTA RAJA, KOTA KUPANG, NUSA TENGGARA TIMUR', '-', '00:00:00', '00:00:00', '2024-05-11 14:07:25', '2024-05-24 06:59:37'),
+(2, 'SUKA ROTI', '3602220060.jpg', 'JL.PERINTIS KEMERDEKAAN 1 NO.1 KAYU PUTI, KEC.OEBOBO KOTA KUPANG, NUSA TENGGARA TIMUR', 'tes', '00:00:00', '00:00:00', '2024-05-11 14:10:35', '2024-05-24 06:59:23'),
+(3, 'ANGELLO BAKERY', '4223311878.jpg', 'JL.JENDRAL SUDIRMAN NO.117A, KUANINO, KEC KOTA RAJA, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '00:00:00', '00:00:00', '2024-05-11 14:54:09', '2024-05-24 06:58:57'),
+(4, 'ROYAL BAKERY', '276103660.jpg', 'JL.BUND.PU KELURAHAN NO.10,TUAK DAUN MERAH,KEC.OEBOBO,KOTA KUPANG,NUSATENGGARA TIM.', '', '00:00:00', '00:00:00', '2024-05-11 14:54:09', '2024-05-24 06:14:05'),
+(5, 'QUEEN ROTI LILIBA', '482227265.jpg', 'JL.PIET A.TALLO, LILIBA, KEC.OEBOBO, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '00:00:00', '00:00:00', '2024-05-11 14:54:09', '2024-05-24 06:58:43'),
+(6, 'SUKA ROTI BAKERY', '2231924521.jpg', 'JL.TIMOR RAYA NO.KM.10 N0.44, LASIANA, KEC.KLP.LIMA KOTA KUPANG, NUSA TENGGARA TIMUR.', '', '00:00:00', '00:00:00', '2024-05-11 14:54:09', '2024-05-24 06:58:22'),
+(7, 'JOY BAKERY', '2289166706.jpg', 'RJ73+XPX, NAIKOLAN, KEC.MAULAFA, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '00:00:00', '00:00:00', '2024-05-11 14:54:09', '2024-05-24 06:57:59'),
+(8, 'ANGELYN BAKERY', '3375888800.jpg', 'JL.TOMPELLO NO.23 B, OETETE, KEC.OEBOBO, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '00:00:00', '00:00:00', '2024-05-11 14:54:09', '2024-05-24 06:57:29'),
+(9, 'ALETHA BAKERY', '611354224.jpg', 'JL.THOM TOUSELAK, OEBUFU, KEC.OEBOBO, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '00:00:00', '00:00:00', '2024-05-11 14:54:09', '2024-05-24 06:57:11'),
+(10, 'J.CO DONUTS DAN BERTALK KUPANG', '885557812.jpg', 'JL.W.J.LALAMENTIK, OEBUFU, OEBOBO, KUPANG CITY, EAST NUSA TENGGARA TIMUR', '', '00:00:00', '00:00:00', '2024-05-11 14:54:09', '2024-05-24 06:56:56'),
+(11, 'SUKA ROTI-ANEKA ROTI SEHAT', '2866511154.jpg', 'JL.MOCH HATTA, OETETE, KEC.OEBOBO, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '00:00:00', '00:00:00', '2024-05-11 14:54:09', '2024-05-24 06:56:39'),
+(12, 'ROTI KAHANG JAYA', '1104221670.jpg', 'JL.PIET A.TALLO, LILIBA, KEC.OEBOBO, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '00:00:00', '00:00:00', '2024-05-11 14:54:09', '2024-05-24 06:56:25'),
+(13, 'SUKA ROTI BAKERY OESAPA', '912053900.jpg', 'VM22+8J5, OESAPA, KEC KLP.LIMA, KOTA KUPANG, NUSA TENGGARA TIMUR.', '', '00:00:00', '00:00:00', '2024-05-11 14:54:09', '2024-05-24 06:55:59'),
+(14, 'PARIS BAKERY', '286369527.jpg', 'JL.TIMUR RAYA NO.KM.9, OESAPA, KEC.KLP.LIMA, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '00:00:00', '00:00:00', '2024-05-11 14:54:10', '2024-05-24 06:55:35'),
+(15, 'ROTI AWET MUDA', '2801990627.jpg', 'JL.HEREWILA NO.3, NAIKOTEN II, KEC.KOTA RAJA, KOTA KUPANG, NUSA TENGGARA TIMUR', '', '00:00:00', '00:00:00', '2024-05-11 14:54:10', '2024-05-24 06:55:20');
 
 -- --------------------------------------------------------
 
@@ -195,17 +229,17 @@ INSERT INTO `toko` (`id_toko`, `nama_toko`, `image_toko`, `alamat`, `deskripsi`,
 --
 
 CREATE TABLE `users` (
-  `id_user` int NOT NULL,
-  `id_role` int DEFAULT NULL,
-  `id_active` int DEFAULT '2',
-  `en_user` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `token` char(6) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `image` varchar(100) COLLATE utf8mb4_general_ci DEFAULT 'default.svg',
-  `email` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `password` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
+  `id_user` int(11) NOT NULL,
+  `id_role` int(11) DEFAULT NULL,
+  `id_active` int(11) DEFAULT 2,
+  `en_user` varchar(75) DEFAULT NULL,
+  `token` char(6) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `image` varchar(100) DEFAULT 'default.svg',
+  `email` varchar(75) DEFAULT NULL,
+  `password` varchar(75) DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -238,9 +272,9 @@ DELIMITER ;
 --
 
 CREATE TABLE `user_access_menu` (
-  `id_access_menu` int NOT NULL,
-  `id_role` int DEFAULT NULL,
-  `id_menu` int DEFAULT NULL
+  `id_access_menu` int(11) NOT NULL,
+  `id_role` int(11) DEFAULT NULL,
+  `id_menu` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -264,9 +298,9 @@ INSERT INTO `user_access_menu` (`id_access_menu`, `id_role`, `id_menu`) VALUES
 --
 
 CREATE TABLE `user_access_sub_menu` (
-  `id_access_sub_menu` int NOT NULL,
-  `id_role` int DEFAULT NULL,
-  `id_sub_menu` int DEFAULT NULL
+  `id_access_sub_menu` int(11) NOT NULL,
+  `id_role` int(11) DEFAULT NULL,
+  `id_sub_menu` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -300,8 +334,8 @@ INSERT INTO `user_access_sub_menu` (`id_access_sub_menu`, `id_role`, `id_sub_men
 --
 
 CREATE TABLE `user_menu` (
-  `id_menu` int NOT NULL,
-  `menu` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `id_menu` int(11) NOT NULL,
+  `menu` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -322,8 +356,8 @@ INSERT INTO `user_menu` (`id_menu`, `menu`) VALUES
 --
 
 CREATE TABLE `user_role` (
-  `id_role` int NOT NULL,
-  `role` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `id_role` int(11) NOT NULL,
+  `role` varchar(35) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -342,8 +376,8 @@ INSERT INTO `user_role` (`id_role`, `role`) VALUES
 --
 
 CREATE TABLE `user_status` (
-  `id_status` int NOT NULL,
-  `status` varchar(35) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `id_status` int(11) NOT NULL,
+  `status` varchar(35) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -361,12 +395,12 @@ INSERT INTO `user_status` (`id_status`, `status`) VALUES
 --
 
 CREATE TABLE `user_sub_menu` (
-  `id_sub_menu` int NOT NULL,
-  `id_menu` int DEFAULT NULL,
-  `id_active` int DEFAULT '2',
-  `title` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `url` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `icon` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `id_sub_menu` int(11) NOT NULL,
+  `id_menu` int(11) DEFAULT NULL,
+  `id_active` int(11) DEFAULT 2,
+  `title` varchar(50) DEFAULT NULL,
+  `url` varchar(50) DEFAULT NULL,
+  `icon` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -415,6 +449,13 @@ ALTER TABLE `kontak`
 --
 ALTER TABLE `maps`
   ADD PRIMARY KEY (`id_map`),
+  ADD KEY `id_toko` (`id_toko`);
+
+--
+-- Indeks untuk tabel `roti`
+--
+ALTER TABLE `roti`
+  ADD PRIMARY KEY (`id_roti`),
   ADD KEY `id_toko` (`id_toko`);
 
 --
@@ -487,79 +528,85 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT untuk tabel `auth`
 --
 ALTER TABLE `auth`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `galeri`
 --
 ALTER TABLE `galeri`
-  MODIFY `id_galeri` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `kontak`
 --
 ALTER TABLE `kontak`
-  MODIFY `id_kontak` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kontak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `maps`
 --
 ALTER TABLE `maps`
-  MODIFY `id_map` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_map` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT untuk tabel `roti`
+--
+ALTER TABLE `roti`
+  MODIFY `id_roti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tentang`
 --
 ALTER TABLE `tentang`
-  MODIFY `id_tentang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tentang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `toko`
 --
 ALTER TABLE `toko`
-  MODIFY `id_toko` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_toko` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id_access_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_access_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_sub_menu`
 --
 ALTER TABLE `user_access_sub_menu`
-  MODIFY `id_access_sub_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_access_sub_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id_role` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_status`
 --
 ALTER TABLE `user_status`
-  MODIFY `id_status` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id_sub_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_sub_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -576,6 +623,12 @@ ALTER TABLE `galeri`
 --
 ALTER TABLE `maps`
   ADD CONSTRAINT `maps_ibfk_1` FOREIGN KEY (`id_toko`) REFERENCES `toko` (`id_toko`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `roti`
+--
+ALTER TABLE `roti`
+  ADD CONSTRAINT `roti_ibfk_1` FOREIGN KEY (`id_toko`) REFERENCES `toko` (`id_toko`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `users`
