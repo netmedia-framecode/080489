@@ -52,6 +52,15 @@ if (!isset($_GET['post_id'])) {
               </li>
             <?php } ?>
           </ul>
+          <h5>Jam Kerja</h5>
+          <p style="margin-top: -30px;">
+            <?php $jam_kerja_buka = date_create($data["jam_kerja_buka"]);
+            $jam_kerja_buka = date_format($jam_kerja_buka, "h:i a");
+            $jam_kerja_tutup = date_create($data["jam_kerja_tutup"]);
+            $jam_kerja_tutup = date_format($jam_kerja_tutup, "h:i a");
+            echo $jam_kerja_buka . ' - ' . $jam_kerja_tutup; ?>
+          </p>
+          <h5>Maps</h5>
           <script>
             require([
               "esri/config",
@@ -129,7 +138,7 @@ if (!isset($_GET['post_id'])) {
               <?php } ?>
             });
           </script>
-          <div id="viewDiv" style="margin-top: 120px; height: 140vh;"></div>
+          <div id="viewDiv" style=" height: 140vh;"></div>
         </div>
 
         <div class="col-md-3 col-md-offset-1">
