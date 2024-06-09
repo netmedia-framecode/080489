@@ -42,10 +42,11 @@ require_once("templates/top.php");
 
     <?php
     while ($row = mysqli_fetch_assoc($view_maps)) {
+      $deskripsi = strip_tags($row['deskripsi']);
       // Buat informasi popup untuk setiap pin
-      $popupContent = "<img src='assets/img/toko/" . $row['image_toko'] . "' class='w-100' style='height: 150px; object-fit: cover;' alt=''>";
-      $popupContent .= "<b>Nama Toko:</b> " . $row['nama_toko'] . "<br>";
-      $popupContent .= "<b>Deskripsi:</b> " . $row['deskripsi'] . "<br>";
+      //   $popupContent = "<img src='assets/img/toko/" . $row['image_toko'] . "' class='w-100' style='height: 150px; object-fit: cover;' alt=''>";
+      $popupContent = "<b>Nama Toko:</b> " . $row['nama_toko'] . "<br>";
+      $popupContent .= "<b>Deskripsi:</b> " . $deskripsi . "<br>";
       $popupContent .= "<b>Alamat:</b> " . $row['alamat'] . "<br>";
       $popupContent .= "<b>Lokasi:</b> Latitude: " . $row['latitude'] . ", Longitude: " . $row['longitude'];
     ?>

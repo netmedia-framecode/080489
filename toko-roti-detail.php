@@ -97,7 +97,7 @@ if (!isset($_GET['post_id'])) {
               $view_maps_detail = mysqli_query($conn, $maps_detail);
               while ($data_maps = mysqli_fetch_assoc($view_maps_detail)) {
                 // Buat informasi popup untuk setiap pin
-                $popupContent = "<img src='assets/img/toko/" . $data_maps['image_toko'] . "' class='w-100' style='height: 150px; object-fit: cover;' alt=''>";
+                // $popupContent = "<img src='assets/img/toko/" . $data_maps['image_toko'] . "' class='w-100' style='height: 150px; object-fit: cover;' alt=''>";
                 $popupContent .= "<b>Nama Toko:</b> " . $data_maps['nama_toko'] . "<br>";
                 $popupContent .= "<b>Alamat:</b> " . $data_maps['alamat'] . "<br>";
                 $popupContent .= "<b>Lokasi:</b> Latitude: " . $data_maps['latitude'] . ", Longitude: " . $data_maps['longitude'];
