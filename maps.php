@@ -48,7 +48,19 @@ require_once("templates/top.php");
       $popupContent = "<b>Nama Toko:</b> " . $row['nama_toko'] . "<br>";
       $popupContent .= "<b>Deskripsi:</b> " . $deskripsi . "<br>";
       $popupContent .= "<b>Alamat:</b> " . $row['alamat'] . "<br>";
-      $popupContent .= "<b>Lokasi:</b> Latitude: " . $row['latitude'] . ", Longitude: " . $row['longitude'];
+      $popupContent .= "<b>Lokasi:</b> Latitude: " . $row['latitude'] . ", Longitude: " . $row['longitude'] . "<br>";
+      $popupContent .= "<b>Jenis-jenis roti:</b><br>";
+
+      $id_toko = valid($conn, $row['id_toko']);
+      $roti = "SELECT * FROM roti WHERE id_toko = '$id_toko'";
+      $view_roti = mysqli_query($conn, $roti);
+      if (mysqli_num_rows($view_roti) > 0) {
+        while ($row_roti = mysqli_fetch_assoc($view_roti)) {
+          $popupContent .= " - " . $row_roti['jenis_roti'] . " Rp." . number_format($row_roti['harga']) . "<br>";
+        }
+      }else{
+        $popupContent .= "belum ada";
+      }
     ?>
 
       // Fungsi untuk membuat dan menambahkan pin
