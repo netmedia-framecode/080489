@@ -32,12 +32,9 @@ require_once("templates/top.php");
             <li data-target="#carousel-light2" data-slide-to="2"></li>
           </ol>
           <div role="listbox" class="carousel-inner">
-            <?php foreach ($view_galeri_current as $data_galeri) { ?>
-              <div class="item active"><img src="<?= $data_galeri['image_galeri'] ?>" alt="" class="img-responsive center-block"></div>
-            <?php }
-            foreach ($view_galeri_seccont as $data_galeri) { ?>
-              <div class="item"><img src="<?= $data_galeri['image_galeri'] ?>" alt="" class="img-responsive center-block"></div>
-            <?php } ?>
+            <div class="item active"><img src="assets/img/galeri/397210404.jpg" alt="" class="img-responsive center-block"></div>
+            <div class="item"><img src="assets/img/galeri/4043521002.jpg" alt="" class="img-responsive center-block"></div>
+            <div class="item"><img src="assets/img/galeri/3874009243.jpg" alt="" class="img-responsive center-block"></div>
           </div>
         </div>
       </div>

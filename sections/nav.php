@@ -36,16 +36,6 @@
             <span class="caret"></span>
           </a>
         </li>
-        <!-- <li>
-          <a href="#" onclick="window.location.href='galeri'">Galeri
-            <span class="caret"></span>
-          </a>
-        </li> -->
-        <li>
-          <a href="#" onclick="window.location.href='kontak'">Kontak
-            <span class="caret"></span>
-          </a>
-        </li>
         <li class="menu-divider visible-lg">&nbsp;</li>
         <li>
           <a href="#" onclick="window.location.href='auth/'">

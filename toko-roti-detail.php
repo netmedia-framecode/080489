@@ -178,21 +178,5 @@ if (!isset($_GET['post_id'])) {
     </div>
   </section>
 
-  <section class="section-small bg-white">
-    <div class="container grid-pad">
-      <h3>Galeri</h3>
-      <div class="row">
-        <?php
-        $galeri = "SELECT * FROM galeri JOIN toko ON galeri.id_toko=toko.id_toko WHERE galeri.id_toko='$id_toko' ORDER BY galeri.id_galeri DESC";
-        $view_galeri = mysqli_query($conn, $galeri);
-        foreach ($view_galeri as $data_galeri) { ?>
-          <div class="col-sm-6 col-md-3">
-            <img src="<?= $data_galeri['image_galeri'] ?>" style="width: 250px; height: 250px; object-fit: cover;" alt="<?= $data_galeri['nama_toko'] ?>" class="img-responsive center-block" />
-          </div>
-        <?php } ?>
-      </div>
-    </div>
-  </section>
-
 <?php require_once("templates/bottom.php");
 } ?>

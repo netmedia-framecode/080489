@@ -90,20 +90,6 @@ function compressImage($source, $destination, $quality)
   return $destination;
 }
 
-function kontak($conn, $data, $action, $pesan)
-{
-  if ($action == "insert") {
-    $sql = "INSERT INTO kontak(username,email,phone,pesan) VALUES('$data[username]','$data[email]','$data[phone]','$pesan')";
-  }
-
-  if ($action == "delete") {
-    $sql = "DELETE FROM kontak WHERE id_kontak='$data[id_kontak]'";
-  }
-
-  mysqli_query($conn, $sql);
-  return mysqli_affected_rows($conn);
-}
-
 if (!isset($_SESSION["project_pemetaan_toko_roti"]["users"])) {
   function register($conn, $data, $action)
   {
@@ -1161,56 +1147,6 @@ if (isset($_SESSION["project_pemetaan_toko_roti"]["users"])) {
     if ($action == "delete") {
       unlink($path . $data['image_toko']);
       $sql = "DELETE FROM toko WHERE id_toko='$data[id_toko]'";
-      mysqli_query($conn, $sql);
-    }
-
-    return mysqli_affected_rows($conn);
-  }
-
-  function galeri($conn, $data, $action, $baseURL)
-  {
-    if ($action == "insert") {
-      $files = $_FILES['images'];
-      $upload_directory = "../assets/img/galeri/";
-
-      for ($i = 0; $i < count($files['name']); $i++) {
-        $file_name = $files['name'][$i];
-        $file_tmp = $files['tmp_name'][$i];
-        $file_size = $files['size'][$i];
-
-        if ($file_size > 2097152) {
-          $message = "Ukuran file harus tepat 2 MB.";
-          $message_type = "danger";
-          alert($message, $message_type);
-          return false;
-        }
-
-        $fileName = str_replace(" ", "-", $file_name);
-        $fileName_encrypt = crc32($fileName);
-        $ekstensiGambar = explode('.', $fileName);
-        $ekstensiGambar = strtolower(end($ekstensiGambar));
-        $imageUploadPath = $upload_directory . $fileName_encrypt . "." . $ekstensiGambar;
-        $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);
-        $allowTypes = array('jpg', 'png', 'jpeg');
-        if (in_array($fileType, $allowTypes)) {
-          compressImage($file_tmp, $imageUploadPath, 75);
-          $url_image = $baseURL . "/assets/img/galeri/" . $fileName_encrypt . "." . $ekstensiGambar;
-          mysqli_query($conn, "INSERT INTO galeri(id_toko,image_galeri) VALUES('$data[id_toko]','$url_image')");
-        } else {
-          $message = "Maaf, hanya file gambar JPG, JPEG, dan PNG yang diperbolehkan.";
-          $message_type = "danger";
-          alert($message, $message_type);
-          return false;
-        }
-      }
-    }
-
-    if ($action == "delete") {
-      $path = "../assets/img/galeri/";
-      $unwanted_characters = $baseURL . "/assets/img/galeri/";
-      $remove_avatar = str_replace($unwanted_characters, "", $data['image_galeri']);
-      unlink($path . $remove_avatar);
-      $sql = "DELETE FROM galeri WHERE id_galeri='$data[id_galeri]'";
       mysqli_query($conn, $sql);
     }
 
