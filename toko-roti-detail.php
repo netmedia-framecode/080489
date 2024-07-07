@@ -43,8 +43,8 @@ if (!isset($_GET['post_id'])) {
           <p style="margin-top: 40px;"><?= $data['deskripsi'] ?></p>
           <h5>Jenis Roti</h5>
           <ul>
-            <?php $data['id_toko'];
-            $roti = "SELECT roti.*, toko.nama_toko FROM roti JOIN toko ON roti.id_toko=toko.id_toko WHERE roti.id_toko='$id_toko'";
+            <?php $id_toko = $data['id_toko'];
+            $roti = "SELECT * FROM roti WHERE id_toko='$id_toko'";
             $view_roti = mysqli_query($conn, $roti);
             while ($data_roti = mysqli_fetch_assoc($view_roti)) { ?>
               <li style="margin-top: -30px;">
@@ -97,7 +97,6 @@ if (!isset($_GET['post_id'])) {
               $view_maps_detail = mysqli_query($conn, $maps_detail);
               while ($data_maps = mysqli_fetch_assoc($view_maps_detail)) {
                 // Buat informasi popup untuk setiap pin
-                // $popupContent = "<img src='assets/img/toko/" . $data_maps['image_toko'] . "' class='w-100' style='height: 150px; object-fit: cover;' alt=''>";
                 $popupContent .= "<b>Nama Toko:</b> " . $data_maps['nama_toko'] . "<br>";
                 $popupContent .= "<b>Alamat:</b> " . $data_maps['alamat'] . "<br>";
                 $popupContent .= "<b>Lokasi:</b> Latitude: " . $data_maps['latitude'] . ", Longitude: " . $data_maps['longitude'];
@@ -138,7 +137,7 @@ if (!isset($_GET['post_id'])) {
               <?php } ?>
             });
           </script>
-          <div id="viewDiv" style=" height: 140vh;"></div>
+          <div id="viewDiv" style="height: 140vh;"></div>
         </div>
 
         <div class="col-md-3 col-md-offset-1">
